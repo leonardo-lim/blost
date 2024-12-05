@@ -1,15 +1,15 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
-import { ConfigProvider } from 'antd';
+import Provider from '@/components/provider/Provider';
 import Layout from '@/components/layout/Layout';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
     return (
-        <ConfigProvider>
+        <Provider>
             <Layout>
                 <Component {...pageProps} />
             </Layout>
-        </ConfigProvider>
+        </Provider>
     );
 };
 
