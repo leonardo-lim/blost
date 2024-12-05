@@ -1,8 +1,13 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
+import { ConfigProvider } from 'antd';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-    return <Component {...pageProps} />;
+    return (
+        <ConfigProvider>
+            <Component {...pageProps} />
+        </ConfigProvider>
+    );
 };
 
 export default MyApp;
