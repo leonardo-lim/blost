@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Navbar from './Navbar';
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -13,6 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <meta name="description" content="Blog Post Web App with Next.js and TypeScript" />
             </Head>
 
+            <Navbar />
             <main>{children}</main>
         </>
     );
