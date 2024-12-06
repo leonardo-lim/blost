@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { Alert, Button, Card, Divider, Flex, Form, Input, Typography } from 'antd';
 import { getUser } from '@/services/user-service';
+import { saveAccessToken } from '@/utils/auth';
 
 interface LoginFormType {
     name: string;
@@ -29,6 +30,7 @@ const Home: NextPage = () => {
 
     const login: FormProps<LoginFormType>['onFinish'] = async () => {
         try {
+            saveAccessToken(accessToken);
             await getUser(accessToken);
             router.push('/posts');
         } catch (error) {
