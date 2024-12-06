@@ -10,6 +10,7 @@ import { getPost } from '@/services/post-service';
 import { getUser } from '@/services/user-service';
 import { getAccessToken } from '@/utils/auth';
 import EditPostModal from '@/components/post/EditPostModal';
+import DeletePostModal from '@/components/post/DeletePostModal';
 
 const PostDetails: NextPage = () => {
     const router = useRouter();
@@ -55,8 +56,9 @@ const PostDetails: NextPage = () => {
                     >
                         <Flex justify="space-between">
                             <FaStickyNote size={200} className="mb-4 opacity-10" />
-                            <Flex className="mt-4">
+                            <Flex className="gap-2 mt-4">
                                 <EditPostModal post={post} refetch={refetch} />
+                                <DeletePostModal post={post} />
                             </Flex>
                         </Flex>
                         <Flex className="mb-2">
