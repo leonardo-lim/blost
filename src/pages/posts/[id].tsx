@@ -9,12 +9,18 @@ import { FaArrowLeft, FaStickyNote } from 'react-icons/fa';
 import { getPost } from '@/services/post-service';
 import { getUser } from '@/services/user-service';
 import { getAccessToken } from '@/utils/auth';
+import EditPostModal from '@/components/post/EditPostModal';
 
 const PostDetails: NextPage = () => {
     const router = useRouter();
     const { id } = router.query;
 
-    const { data: post, isLoading: isPostLoading, isError: isPostError } = useQuery<PostType>({
+    const {
+        data: post,
+        isLoading: isPostLoading,
+        isError: isPostError,
+        refetch
+    } = useQuery<PostType>({
         queryKey: ['post'],
         queryFn: () => getPost(getAccessToken(), id ? parseInt(id.toString()) : 0)
     });
@@ -47,7 +53,12 @@ const PostDetails: NextPage = () => {
                         bordered={false}
                         className="w-full md:w-2/3 2xl:w-2/4 !m-auto !rounded-xl"
                     >
-                        <FaStickyNote size={256} className="mb-4 opacity-10" />
+                        <Flex justify="space-between">
+                            <FaStickyNote size={200} className="mb-4 opacity-10" />
+                            <Flex className="mt-4">
+                                <EditPostModal post={post} refetch={refetch} />
+                            </Flex>
+                        </Flex>
                         <Flex className="mb-2">
                             <Tag color="default">Authored by {user.name}</Tag>
                         </Flex>
