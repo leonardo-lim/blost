@@ -17,4 +17,9 @@ interface AddPostMutationType {
     body: string;
 }
 
-export type { PostType, PostsQueryType, AddPostMutationType };
+interface UpdatePostMutationType {
+    title: string;
+    body: string;
+}
+
+export type { PostType, PostsQueryType, AddPostMutationType, UpdatePostMutationType };
