@@ -1,4 +1,4 @@
-import type { PostsQueryType, PostType } from '@/types/post-type';
+import type { AddPostMutationType, PostsQueryType, PostType } from '@/types/post-type';
 import axiosInstance from '@/lib/axios-instance';
 
 const getPosts = async (accessToken: string, page: number): Promise<PostsQueryType> => {
@@ -24,4 +24,14 @@ const getPost = async (accessToken: string, id: number): Promise<PostType> => {
     return response.data;
 };
 
-export { getPosts, getPost };
+const addPost = async (accessToken: string, post: AddPostMutationType) => {
+    const response = await axiosInstance.post('/users/7567035/posts', post, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    });
+
+    return response.data;
+};
+
+export { getPosts, getPost, addPost };
