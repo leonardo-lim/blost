@@ -1,3 +1,5 @@
+import type { AxiosHeaderValue } from 'axios';
+
 interface PostType {
     id: string;
     user_id: string;
@@ -5,4 +7,9 @@ interface PostType {
     body: string;
 }
 
-export type { PostType };
+interface PostsQueryType {
+    data: PostType[];
+    headers: Record<string, AxiosHeaderValue | undefined>;
+}
+
+export type { PostType, PostsQueryType };
