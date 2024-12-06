@@ -7,13 +7,14 @@ import { Alert, Col, Flex, Pagination, Row, Typography } from 'antd';
 import { getPosts } from '@/services/post-service';
 import { getAccessToken } from '@/utils/auth';
 import SearchInput from '@/components/post/SearchInput';
+import CreatePostModal from '@/components/post/CreatePostModal';
 import PostCard from '@/components/post/PostCard';
 
 const Posts: NextPage = () => {
     const [currentPageNumber, setCurrentPageNumber] = useState(1);
     const [postsTotal, setPostsTotal] = useState(0);
 
-    const { data: posts, isLoading, isError } = useQuery<PostsQueryType>({
+    const { data: posts, isLoading, isError, refetch } = useQuery<PostsQueryType>({
         queryKey: ['posts', currentPageNumber],
         queryFn: () => getPosts(getAccessToken(), currentPageNumber)
     });
@@ -59,10 +60,13 @@ const Posts: NextPage = () => {
                     <>
                         <Flex vertical className="w-full gap-6">
                             {posts.data.length > 0 && (
-                                <SearchInput
-                                    posts={posts.data}
-                                    setFilteredPosts={setFilteredPosts}
-                                />
+                                <Flex className="gap-4">
+                                    <SearchInput
+                                        posts={posts.data}
+                                        setFilteredPosts={setFilteredPosts}
+                                    />
+                                    <CreatePostModal refetch={refetch} />
+                                </Flex>
                             )}
                             <Row gutter={[20, 20]}>
                                 {filteredPosts.map((post, idx) => {
