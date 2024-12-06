@@ -1,8 +1,8 @@
 import type { AxiosHeaderValue } from 'axios';
 
 interface PostType {
-    id: string;
-    user_id: string;
+    id: number;
+    user_id: number;
     title: string;
     body: string;
 }
