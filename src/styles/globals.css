@@ -22,6 +22,10 @@ body.dark {
     background: #181818;
 }
 
+body.dark .ant-btn-color-default.ant-btn-variant-solid {
+    color: #000000 !important;
+}
+
 .ant-typography,
 .ant-input {
     font-family: 'Outfit', sans-serif !important;
