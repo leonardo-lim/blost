@@ -12,4 +12,9 @@ interface PostsQueryType {
     headers: Record<string, AxiosHeaderValue | undefined>;
 }
 
-export type { PostType, PostsQueryType };
+interface AddPostMutationType {
+    title: string;
+    body: string;
+}
+
+export type { PostType, PostsQueryType, AddPostMutationType };
