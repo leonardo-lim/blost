@@ -100,6 +100,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({ refetch }) => {
                             onChange={handleChangeBody}
                             placeholder="Enter your body"
                             size="large"
+                            rows={4}
                         />
                     </Form.Item>
 
