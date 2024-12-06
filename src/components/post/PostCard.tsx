@@ -1,4 +1,5 @@
 import type { PostType } from '@/types/post-type';
+import Link from 'next/link';
 import { Button, Card, Flex, Typography } from 'antd';
 import { FaEye, FaStickyNote } from 'react-icons/fa';
 
@@ -22,16 +23,18 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 >
                     {post.body}
                 </Typography.Text>
-                <Button
-                    color="default"
-                    variant="solid"
-                    size="large"
-                    icon={<FaEye />}
-                    block
-                    className="mt-4"
-                >
-                    See Details
-                </Button>
+                <Link href={`/posts/${post.id}`}>
+                    <Button
+                        color="default"
+                        variant="solid"
+                        size="large"
+                        icon={<FaEye />}
+                        block
+                        className="mt-4"
+                    >
+                        See Details
+                    </Button>
+                </Link>
             </Flex>
         </Card>
     );
