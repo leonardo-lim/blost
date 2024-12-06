@@ -1,4 +1,4 @@
-import type { PostsQueryType } from '@/types/post-type';
+import type { PostsQueryType, PostType } from '@/types/post-type';
 import axiosInstance from '@/lib/axios-instance';
 
 const getPosts = async (accessToken: string, page: number): Promise<PostsQueryType> => {
@@ -14,4 +14,14 @@ const getPosts = async (accessToken: string, page: number): Promise<PostsQueryTy
     };
 };
 
-export { getPosts };
+const getPost = async (accessToken: string, id: number): Promise<PostType> => {
+    const response = await axiosInstance.get(`/posts/${id}`, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    });
+
+    return response.data;
+};
+
+export { getPosts, getPost };
